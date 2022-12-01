@@ -11,12 +11,20 @@
             <h3>***directions/description***</h3>
         </header>
         <div id="exercise-search">
-            <select id="bodypart-dropdown"></select>
-            <select id="equipment-dropdown"></select>
+            <select id="bodypart-dropdown">
+                <option value="" disabled selected>select bodypart</option>
+            </select>
+            <select id="equipment-dropdown">
+                <option value="" disabled selected>select equipment</option>
+                <option value="undefined">no preference</option>
+            </select>
             <button id="search-button">Search Exercises</button>
         </div>
         <div id="exercise-list"></div>
-        <div id="focus-exercise"></div>
+        <div id="focus-exercise" hidden="true">
+            <img id="focus-image">
+            <h3 id="target-muscle">***target muscle***</h4>
+        </div>
         <footer>
             <h3>***inspirational quote/random quote generator?***</h3>
         </footer>
