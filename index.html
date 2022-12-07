@@ -2,8 +2,8 @@
 <html lang="en">
     <head>
         <title>Work-Smart</title>
-        <script src="index.css"></script>
-        <script defer src="index.js"></script>
+        <link src="index.css"></link>
+        <script defer src="index.js" charset="utf-8"></script>
     </head>
     <body>
         <header>
@@ -12,19 +12,16 @@
         </header>
         <div id="exercise-search">
             <select id="bodypart-dropdown">
-                <option value="" disabled selected>select bodypart</option>
+                <option disabled selected>Select Bodypart</option>
             </select>
             <select id="equipment-dropdown">
-                <option value="" disabled selected>select equipment</option>
-                <option value="undefined">no preference</option>
+                <option disabled selected>Optional: Select Equipment</option>
+                <option value="none">No Preference</option>
             </select>
             <button id="search-button">Search Exercises</button>
         </div>
+        <div id="favorited-list"></div>
         <div id="exercise-list"></div>
-        <div id="focus-exercise" hidden="true">
-            <img id="focus-image">
-            <h3 id="target-muscle">***target muscle***</h4>
-        </div>
         <footer>
             <h3>***inspirational quote/random quote generator?***</h3>
         </footer>
