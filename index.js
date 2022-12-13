@@ -1,15 +1,17 @@
 const exerciseObj = {
     bodyparts: ["back", "cardio", "chest", "lower arms", "lower legs", "neck", "shoulders", "upper arms", "upper legs", "waist"],
-    equipments: ["assisted", "band", "barbell", "body weight", "bosu ball", "cable", "dumbbell", "elliptical machine", "ez barbell", "hammer", "kettlebell", "leverage machine", "medicine ball", "olympic barbell", "resistance band", "roller", "rope", "skierg machine", "sled machine", "smith machine", "stability ball", "stationary bike", "stepmill machine", "tire", "trap bar", "upper body ergometer", "weighted", "wheel roller"],
-    targets: ["abductors", "abs", "adductors", "biceps", "calves", "cardiovascular system", "delts", "forearms", "glutes", "hamstrings", "lats", "levator scapulae", "pectorals", "quads", "serratus anterior", "spine", "traps", "triceps", "upper back"]
+    equipments: ["assisted", "band", "barbell", "body weight", "bosu ball", "cable", "dumbbell", "elliptical machine", "ez barbell", "hammer", "kettlebell", "leverage machine", "medicine ball", "olympic barbell", "resistance band", "roller", "rope", "skierg machine", "sled machine", "smith machine", "stability ball", "stationary bike", "stepmill machine", "tire", "trap bar", "upper body ergometer", "weighted", "wheel roller"]
 }
 const bodypartDropdown = document.querySelector('#bodypart-dropdown')
 const equipmentDropdown = document.querySelector('#equipment-dropdown')
 let currentBodypart
 let currentEquipment = 'none'
 const searchButton = document.querySelector('#search-button')
-const favoriteList = document.querySelector('#favorited-list')
+const toggleButton = document.querySelector('#toggle-favorites')
+const favoriteList = document.querySelector('#favorite-list')
 const exerciseList = document.querySelector('#exercise-list')
+let favoriteExercises = []
+let allExercises = []
 
 // Set up bodyparts and equipments dropdown menu
 for(const bodypart of exerciseObj.bodyparts) {
@@ -42,103 +44,95 @@ function setDropdownEvent(item) {
 
 // Add an event listener to the search button to fetch exercises
 searchButton.addEventListener('click', () => {
-    fetchExercises()
-})
-
-// Define a function that adds every potential exercise to the DOM
-function fetchExercises() {
     fetch('http://localhost:3000/exercises')
     .then(response => response.json())
     .then(data => {
         favoriteList.textContent = ''
         exerciseList.textContent = ''
+        favoriteExercises = []
+        allExercises = []
         for(const exercise of data) {
-// Uncomment if we are persisting the favorited exercises
-            // if(exercise.favorite) {
-                if(currentEquipment === 'none') {
-                    if(currentBodypart === exercise.bodyPart) {
+            if(exercise.favorite) {
+                if(currentEquipment === 'none' && currentBodypart === exercise.bodyPart) {
+                    favoriteExercises.push(exercise)
+                    allExercises.push(exercise)
+                    favoriteList.append(createExerciseDiv(exercise))
+                } else {
+                    if(currentEquipment === exercise.equipment && currentBodypart === exercise.bodyPart) {
+                        favoriteExercises.push(exercise)
+                        allExercises.push(exercise)
                         favoriteList.append(createExerciseDiv(exercise))
                     }
+                }
+            } else {
+                if(currentEquipment === 'none' && currentBodypart === exercise.bodyPart) {
+                    allExercises.push(exercise)
+                    exerciseList.append(createExerciseDiv(exercise))
                 } else {
-                    if(currentEquipment === exercise.equipment) {
-                        if(currentBodypart === exercise.bodyPart) {
-                            favoriteList.append(createExerciseDiv(exercise))
-                        }
+                    if(currentEquipment === exercise.equipment && currentBodypart === exercise.bodyPart) {
+                        allExercises.push(exercise)
+                        exerciseList.append(createExerciseDiv(exercise))
                     }
                 }
-            // } else {
-            //     if(currentEquipment === 'none') {
-            //         if(currentBodypart === exercise.bodyPart) {
-            //             exerciseList.append(createExerciseDiv(exercise))
-            //         }
-            //     } else {
-            //         if(currentEquipment === exercise.equipment) {
-            //             if(currentBodypart === exercise.bodyPart) {
-            //                 exerciseList.append(createExerciseDiv(exercise))
-            //             }
-            //         }
-            //     }
-            // }   
+            }
         }
     })
-    .catch(error => console.log(error, '50'))
-}
+    .catch(error => console.log(error))
+})
 
-// Define a function that creates a div for each exercise from API
+// Define a function that returns a div for an exercise object
 function createExerciseDiv(exercise) {
     const exerciseDiv = document.createElement('div')
     exerciseDiv.className = 'exercise'
 
-// Create a star to favorite an exercise
+    // Create the star
     const star = document.createElement('div')
-    if(exercise.favorite) {
+    if(exercise.favorite || favoriteExercises.indexOf(exercise) !== -1) {
         star.textContent = '★'
-    } else {
+    } if(favoriteExercises.indexOf(exercise) === -1) {
         star.textContent = '☆'
     }
     star.addEventListener('click', () => {
-        if(star.textContent === '☆') {
-            star.textContent = '★'
+        if(favoriteExercises.indexOf(exercise) === -1) {
+            fetch(`http://localhost:3000/exercises/${exercise.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                favorite: true
+            })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.log(error))
 
-// Uncomment if we are persisting the favorited exercises
-            // fetch(`http://localhost:3000/exercises/${exercise.id}`, {
-            //     method: 'PATCH',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //         'Accept': 'application/json'
-            //     },
-            //     body: JSON.stringify({
-            //         favorite: true
-            //     })
-            // })
-            // .then(response => response.json())
-            // .then(data => console.log(data))
-            // .catch(error => console.log(error, '101'))
-
-            // fetchExercises()
+            favoriteExercises.push(exercise)
+            renderFavorites()
         } else {
-            star.textContent = '☆'
+            fetch(`http://localhost:3000/exercises/${exercise.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                favorite: false
+            })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.log(error))
 
-// Uncomment if we are persisting the favorited exercises
-            // fetch(`http://localhost:3000/exercises/${exercise.id}`, {
-            //     method: 'PATCH',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //         'Accept': 'application/json'
-            //     },
-            //     body: JSON.stringify({
-            //         favorite: false
-            //     })
-            // })
-            // .then(response => response.json())
-            // .then(data => console.log(data))
-            // .catch(error => console.log(error, '119'))
-
-            // fetchExercises()
+            favoriteExercises = favoriteExercises.filter(item => {
+                return item !== exercise
+            })
+            renderFavorites()
         }
     })
 
-// Create the name and details button
+    // Create the name and details button
     const name = document.createElement('h3')
     name.textContent = exercise.name.charAt(0).toUpperCase() + exercise.name.slice(1)
     
@@ -152,7 +146,7 @@ function createExerciseDiv(exercise) {
         }
     })
 
-// Create the details div
+    // Create the details div
     const detailsDiv = document.createElement('div')
     detailsDiv.id ="exercise-details"
     detailsDiv.hidden = true
@@ -164,79 +158,107 @@ function createExerciseDiv(exercise) {
     const target = document.createElement('h5')
     target.textContent = 'Targets: ' + exercise.target.charAt(0).toUpperCase() + exercise.target.slice(1)
     
-    const notesList = document.createElement('ul')
-    notesList.id = 'notes-list'
-// Render any persisted notes
-    if(exercise.notes) {
-        exercise.notes.forEach(note => {
-            notesList.append(createNoteDiv(exercise, note))
-        })
-    }
+    // Create the note container and form
+    const noteContainer = document.createElement('ul')
+    noteContainer.className = 'note-container'
 
-    const notesForm = document.createElement('form')
-    notesForm.id = 'notes-form'
-    notesForm.addEventListener('submit', event => {
-        event.preventDefault()
-
-        notesList.append(createNoteDiv(exercise, event.target[0].value))
-
-        fetch(`http://localhost:3000/exercises/${exercise.id}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    notes: [
-                        // PATCH THE NOTE INTO AN ARRAY
-                        event.target[0].value
-                    ]
-                })
-            })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.log(error, '182'))
-
-        notesForm.reset()
-    })
-    
-    const notesInput = document.createElement('textarea')
-    notesInput.placeholder = 'Notes'
-
-    const notesSubmit = document.createElement('button')
-    notesSubmit.textContent = 'Save Note'
-
-    notesForm.append(notesInput, notesSubmit)
-    detailsDiv.append(image, target, notesList, notesForm)
-    exerciseDiv.append(star, name, detailsButton, detailsDiv)
-    return exerciseDiv
-}
-
-// Define a function that creates the notes div and delete button
-function createNoteDiv(currentExercise, currentNote) {
     const newNote = document.createElement('li')
-    newNote.textContent = currentNote
+    if(exercise.note) {
+        noteContainer.append(createNote.call(exercise, exercise.note, newNote))
+    }
+    
+    const noteInput = document.createElement('textarea')
+    noteInput.placeholder = 'Notes'
 
-    const notesDelete = document.createElement('button')
-    notesDelete.textContent = 'Delete Note'
-    notesDelete.addEventListener('click', () => {
-        newNote.remove()
-        notesDelete.remove()
+    const noteSubmit = document.createElement('button')
+    noteSubmit.textContent = 'Save Note'
 
-        fetch(`http://localhost:3000/exercises/${currentExercise.id}`, {
+    const noteForm = document.createElement('form')
+    noteForm.id = 'notes-form'
+    noteForm.addEventListener('submit', event => {
+        event.preventDefault()
+        
+        fetch(`http://localhost:3000/exercises/${exercise.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                // UPDATE SERVER WHEN NOTE IS DELETED
+                note: event.target[0].value
             })
         })
         .then(response => response.json())
         .then(data => console.log(data))
-        .catch(error => console.log(error, '182'))
+        .catch(error => console.log(error))
+
+        exercise.note = event.target[0].value
+        favoriteExercises.splice(favoriteExercises.indexOf(exercise), 1, exercise)
+        noteContainer.append(createNote.call(exercise, event.target[0].value, newNote))
+        noteForm.reset()
     })
-    newNote.append(notesDelete)
-    return newNote
+
+    // Append all the elements
+    noteForm.append(noteInput, noteSubmit)
+    detailsDiv.append(image, target, noteContainer, noteForm)
+    exerciseDiv.append(star, name, detailsButton, detailsDiv)
+    return exerciseDiv
+}
+
+// Define a function that renders the favorited exercises first
+function renderFavorites() {
+    favoriteList.textContent = ''
+    exerciseList.textContent = ''
+    favoriteExercises.sort((a, b) => {
+        return a.name.localeCompare(b.name)
+    })
+    for(const exercise of favoriteExercises) {
+        if(currentEquipment === 'none' && currentBodypart === exercise.bodyPart) {
+            favoriteList.append(createExerciseDiv(exercise))
+        } else {
+            if(currentEquipment === exercise.equipment && currentBodypart === exercise.bodyPart) {
+                favoriteList.append(createExerciseDiv(exercise))
+            }
+        }
+    }
+    for(const exercise of allExercises) {
+        if(favoriteExercises.indexOf(exercise) === -1) {
+            if(currentEquipment === 'none' && currentBodypart === exercise.bodyPart) {
+                exerciseList.append(createExerciseDiv(exercise))
+            } else {
+                if(currentEquipment === exercise.equipment && currentBodypart === exercise.bodyPart) {
+                    exerciseList.append(createExerciseDiv(exercise))
+                }
+            }
+        }
+    }
+}
+
+// Define a function that returns the note and delete button
+function createNote(noteContent, note) {
+    const noteDelete = document.createElement('button')
+    noteDelete.textContent = 'Delete Note'
+    noteDelete.addEventListener('click', () => {
+        fetch(`http://localhost:3000/exercises/${this.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                note: ''
+            })
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.log(error))
+        
+        this.note = ''
+        favoriteExercises.splice(favoriteExercises.indexOf(this), 1, this)
+        note.remove()
+        noteDelete.remove()
+    })
+    note.textContent = noteContent
+    note.append(noteDelete)
+    return note
 }

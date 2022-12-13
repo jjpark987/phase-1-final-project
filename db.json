@@ -110,10 +110,8 @@
       "id": "0007",
       "name": "alternate lateral pulldown",
       "target": "lats",
-      "favorite": false,
-      "notes": [
-        "s", "d"
-      ]
+      "note": "",
+      "favorite": false
     },
     {
       "bodyPart": "lower legs",
@@ -130,6 +128,7 @@
       "id": "3293",
       "name": "archer pull up",
       "target": "lats",
+      "note": "",
       "favorite": false
     },
     {
@@ -253,6 +252,7 @@
       "id": "0015",
       "name": "assisted parallel close grip pull-up",
       "target": "lats",
+      "note": "",
       "favorite": false
     },
     {
@@ -286,7 +286,8 @@
       "id": "0017",
       "name": "assisted pull-up",
       "target": "lats",
-      "favorite": false
+      "note": "",
+      "favorite": true
     },
     {
       "bodyPart": "chest",
@@ -320,6 +321,7 @@
       "id": "1431",
       "name": "assisted standing chin-up",
       "target": "lats",
+      "note": "",
       "favorite": false
     },
     {
@@ -329,6 +331,7 @@
       "id": "1432",
       "name": "assisted standing pull-up",
       "target": "lats",
+      "note": "",
       "favorite": false
     },
     {
@@ -362,7 +365,9 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/3220.gif",
       "id": "3220",
       "name": "astride jumps (male)",
-      "target": "cardiovascular system"
+      "target": "cardiovascular system",
+      "favorite": false,
+      "note": ""
     },
     {
       "bodyPart": "cardio",
@@ -370,7 +375,8 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/3672.gif",
       "id": "3672",
       "name": "back and forth step",
-      "target": "cardiovascular system"
+      "target": "cardiovascular system",
+      "favorite": false
     },
     {
       "bodyPart": "back",
@@ -378,7 +384,8 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1314.gif",
       "id": "1314",
       "name": "back extension on exercise ball",
-      "target": "spine"
+      "target": "spine",
+      "favorite": false
     },
     {
       "bodyPart": "back",
@@ -450,8 +457,7 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1254.gif",
       "id": "1254",
       "name": "band bench press",
-      "target": "pectorals",
-      "favorite": false
+      "target": "pectorals"
     },
     {
       "bodyPart": "upper legs",
@@ -611,8 +617,7 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0989.gif",
       "id": "0989",
       "name": "band one arm twisting chest press",
-      "target": "pectorals",
-      "favorite": false
+      "target": "pectorals"
     },
     {
       "bodyPart": "back",
@@ -868,8 +873,7 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0025.gif",
       "id": "0025",
       "name": "barbell bench press",
-      "target": "pectorals",
-      "favorite": false
+      "target": "pectorals"
     },
     {
       "bodyPart": "upper legs",
@@ -949,8 +953,7 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0033.gif",
       "id": "0033",
       "name": "barbell decline bench press",
-      "target": "pectorals",
-      "favorite": false
+      "target": "pectorals"
     },
     {
       "bodyPart": "back",
@@ -974,8 +977,7 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1255.gif",
       "id": "1255",
       "name": "barbell decline pullover",
-      "target": "pectorals",
-      "favorite": false
+      "target": "pectorals"
     },
     {
       "bodyPart": "chest",
@@ -1999,7 +2001,8 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/3360.gif",
       "id": "3360",
       "name": "bear crawl",
-      "target": "cardiovascular system"
+      "target": "cardiovascular system",
+      "favorite": false
     },
     {
       "bodyPart": "chest",
@@ -2215,7 +2218,8 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1160.gif",
       "id": "1160",
       "name": "burpee",
-      "target": "cardiovascular system"
+      "target": "cardiovascular system",
+      "favorite": false
     },
     {
       "bodyPart": "waist",
