@@ -287,7 +287,7 @@
       "name": "assisted pull-up",
       "target": "lats",
       "note": "",
-      "favorite": true
+      "favorite": false
     },
     {
       "bodyPart": "chest",
@@ -393,7 +393,8 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/3297.gif",
       "id": "3297",
       "name": "back lever",
-      "target": "upper back"
+      "target": "upper back",
+      "favorite": false
     },
     {
       "bodyPart": "back",
@@ -889,7 +890,9 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1316.gif",
       "id": "1316",
       "name": "barbell bent arm pullover",
-      "target": "lats"
+      "target": "lats",
+      "note": "",
+      "favorite": false
     },
     {
       "bodyPart": "back",
@@ -897,7 +900,9 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0027.gif",
       "id": "0027",
       "name": "barbell bent over row",
-      "target": "upper back"
+      "target": "upper back",
+      "favorite": false,
+      "note": ""
     },
     {
       "bodyPart": "upper arms",
@@ -7091,7 +7096,8 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0521.gif",
       "id": "0521",
       "name": "kettlebell alternating renegade row",
-      "target": "upper back"
+      "target": "upper back",
+      "note": ""
     },
     {
       "bodyPart": "back",
