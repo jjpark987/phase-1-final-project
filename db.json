@@ -110,8 +110,8 @@
       "id": "0007",
       "name": "alternate lateral pulldown",
       "target": "lats",
-      "note": "",
-      "favorite": false
+      "note": "Last workout: 30lbs 3x10",
+      "favorite": true
     },
     {
       "bodyPart": "lower legs",
@@ -128,8 +128,8 @@
       "id": "3293",
       "name": "archer pull up",
       "target": "lats",
-      "note": "",
-      "favorite": false
+      "note": "Test \nNote",
+      "favorite": true
     },
     {
       "bodyPart": "chest",
@@ -394,7 +394,8 @@
       "id": "3297",
       "name": "back lever",
       "target": "upper back",
-      "favorite": false
+      "favorite": false,
+      "note": ""
     },
     {
       "bodyPart": "back",
@@ -9361,7 +9362,9 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/3304.gif",
       "id": "3304",
       "name": "skin the cat",
-      "target": "upper back"
+      "target": "upper back",
+      "favorite": true,
+      "note": "This is a very long note. This is a very long note. This is a very long note."
     },
     {
       "bodyPart": "upper legs",

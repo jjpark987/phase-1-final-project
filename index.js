@@ -137,7 +137,7 @@ function createExerciseDiv(exercise) {
     name.textContent = exercise.name.charAt(0).toUpperCase() + exercise.name.slice(1)
     
     const detailsButton = document.createElement('button')
-    detailsButton.textContent = 'See Details'
+    detailsButton.textContent = 'Details'
     detailsButton.addEventListener('click', () => {
         if(detailsDiv.hidden) {
             detailsDiv.hidden = false
@@ -148,33 +148,37 @@ function createExerciseDiv(exercise) {
 
     // Create the details div
     const detailsDiv = document.createElement('div')
-    detailsDiv.id ="exercise-details"
+    detailsDiv.className = "exercise-details"
     detailsDiv.hidden = true
 
     const image = document.createElement('img')
     image.src = exercise.gifUrl
     image.alt = 'Exercise GIF'
+    image.width = '300'
     
-    const target = document.createElement('h5')
+    const target = document.createElement('h4')
     target.textContent = 'Targets: ' + exercise.target.charAt(0).toUpperCase() + exercise.target.slice(1)
     
     // Create the note container and form
-    const noteContainer = document.createElement('ul')
+    const noteContainer = document.createElement('div')
     noteContainer.className = 'note-container'
 
-    const newNote = document.createElement('li')
+    const newNote = document.createElement('p')
     if(exercise.note) {
-        noteContainer.append(createNote.call(exercise, exercise.note, newNote))
+        newNote.textContent = exercise.note
+        noteContainer.append(newNote, createDeleteButton.call(exercise, newNote))
     }
     
     const noteInput = document.createElement('textarea')
     noteInput.placeholder = 'Notes'
+    noteInput.cols = '20'
+    noteInput.required = true
 
     const noteSubmit = document.createElement('button')
-    noteSubmit.textContent = 'Save Note'
+    noteSubmit.textContent = 'Save'
 
     const noteForm = document.createElement('form')
-    noteForm.id = 'notes-form'
+    noteForm.className = 'note-form'
     noteForm.addEventListener('submit', event => {
         event.preventDefault()
         
@@ -194,13 +198,16 @@ function createExerciseDiv(exercise) {
 
         exercise.note = event.target[0].value
         favoriteExercises.splice(favoriteExercises.indexOf(exercise), 1, exercise)
-        noteContainer.append(createNote.call(exercise, event.target[0].value, newNote))
+
+        noteContainer.textContent = ''
+        newNote.textContent = event.target[0].value
+        noteContainer.append(newNote, createDeleteButton.call(exercise, newNote))
         noteForm.reset()
     })
 
     // Append all the elements
     noteForm.append(noteInput, noteSubmit)
-    detailsDiv.append(image, target, noteContainer, noteForm)
+    detailsDiv.append(image, target, noteForm, noteContainer)
     exerciseDiv.append(star, name, detailsButton, detailsDiv)
     return exerciseDiv
 }
@@ -235,9 +242,9 @@ function renderFavorites() {
 }
 
 // Define a function that returns the note and delete button
-function createNote(noteContent, note) {
+function createDeleteButton(note) {
     const noteDelete = document.createElement('button')
-    noteDelete.textContent = 'Delete Note'
+    noteDelete.textContent = 'Delete'
     noteDelete.addEventListener('click', () => {
         fetch(`http://localhost:3000/exercises/${this.id}`, {
             method: 'PATCH',
@@ -258,7 +265,5 @@ function createNote(noteContent, note) {
         note.remove()
         noteDelete.remove()
     })
-    note.textContent = noteContent
-    note.append(noteDelete)
-    return note
+    return noteDelete
 }
