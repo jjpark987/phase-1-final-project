@@ -13,7 +13,7 @@ const exerciseList = document.querySelector('#exercise-list')
 let favoriteExercises = []
 let allExercises = []
 
-// Set up bodyparts and equipments dropdown menu
+// Set up bodyparts and equipments dropdown menu test
 for(const bodypart of exerciseObj.bodyparts) {
     bodypartDropdown.append(setDropdown(bodypart))
 }

@@ -1,7 +1,7 @@
 # Phase 1 Project: ***title
 
 ## Introduction
-
+test
 Have you ever gotten sick of your normal workout routine at the gym? If you are like me and don't know all of the different types of exercises, going to the gym can turn into a monotonous chore. ***title is a simple web application that lets the user select a body part to search for all matching exercises from a database of over 1300 exercises. If needed, the user can refine the search by selecting an equipment they want to incorporate into the exercise.
 
 ## Description
