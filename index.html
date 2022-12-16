@@ -7,8 +7,8 @@
     </head>
     <body>
         <header>
-            <h1>***title***</h1>
-            <h3>***directions/description***</h3>
+            <h1 id="title">Workout Finder</h1>
+            <h3 id="description">Please select a body part to begin searching for matching exercises</h3>
         </header>
         <div id="exercise-search">
             <select id="bodypart-dropdown">
@@ -16,14 +16,14 @@
             </select>
             <select id="equipment-dropdown">
                 <option disabled selected>Optional: Select Equipment</option>
-                <option value="none">No Preference</option>
+                <option value="undefined">No Preference</option>
             </select>
             <button id="search-button">Search Exercises</button>
         </div>
         <div id="favorite-list" class="list"></div>
         <div id="exercise-list" class="list"></div>
         <footer>
-            <h3>***inspirational quote***</h3>
+            <p id="quote">"The pain you feel today will be the strength you feel tomorrow."</p>
         </footer>
     </body>
 </html>

@@ -1,44 +1,56 @@
-/*
-Things to do:
-1. Move detailsDiv under star, name and button
-2. Set the area, where the note is display, fixed
-3. Adjust the spacing between elements in .exercise and align to the center in the center of the screen
-*/
-
-html {
+html, body {
     background-color: lightslategray;
     font-family: system-ui;
-}
-
-body {
-    display: flex;
-    flex-flow: column wrap;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    min-height: 75vh;
 }
 
 header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 700px;
+    justify-content: center;
+    text-align: center;
+}
+
+#title {
+    font-size: 100px;
+    margin: 0;
 }
 
 #exercise-search {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 3%;
 }
 
 .list {
-    display: grid
+    display: grid;
+    grid-template-columns: 700px;
+    justify-content: center;
+}
+
+.message {
+    display: grid;
+    justify-content: center;
 }
 
 .exercise {
-    display: flex;
+    display: grid;
+    grid-template-columns: 25px auto 55px;
     align-items: center;
+    margin-bottom: 1px;
 }
 
 .exercise-details {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 300px;
+    grid-column: span 3;
+    justify-content: center;
+    justify-items: center;
 }
 
 .details-hidden {
@@ -47,18 +59,25 @@ header {
 
 textarea {
     resize: none;
-    vertical-align: middle;
     font-family: system-ui;
     font-size: 16px;
+    justify-self: stretch;
 }
 
-.note-form, .note-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.note-form {
+    display: grid;
+    grid-template-rows: 4fr 1fr;
+}
+
+.note-container {
+    display: grid;
+    justify-self: stretch;
 }
 
 footer {
-    display: flex;
+    display: grid;
+    grid-template-columns: 700px;
     justify-content: center;
+    justify-items: center;
+    font-style: italic;
 }

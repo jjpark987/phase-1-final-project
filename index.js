@@ -5,13 +5,19 @@ const exerciseObj = {
 const bodypartDropdown = document.querySelector('#bodypart-dropdown')
 const equipmentDropdown = document.querySelector('#equipment-dropdown')
 let currentBodypart
-let currentEquipment = 'none'
+let currentEquipment = 'undefined'
 const searchButton = document.querySelector('#search-button')
 const toggleButton = document.querySelector('#toggle-favorites')
 const favoriteList = document.querySelector('#favorite-list')
 const exerciseList = document.querySelector('#exercise-list')
 let favoriteExercises = []
 let allExercises = []
+const noSelectionMessage = document.createElement('h3')
+const noExerciseMessage = document.createElement('h3')
+noSelectionMessage.textContent = 'Please select a body part'
+noExerciseMessage.textContent = 'There are no exercises available'
+noSelectionMessage.className = 'message'
+noExerciseMessage.className = 'message'
 
 // Set up bodyparts and equipments dropdown menu
 for(const bodypart of exerciseObj.bodyparts) {
@@ -47,33 +53,40 @@ searchButton.addEventListener('click', () => {
     fetch('http://localhost:3000/exercises')
     .then(response => response.json())
     .then(data => {
-        favoriteList.textContent = ''
-        exerciseList.textContent = ''
-        favoriteExercises = []
-        allExercises = []
-        for(const exercise of data) {
-            if(exercise.favorite) {
-                if(currentEquipment === 'none' && currentBodypart === exercise.bodyPart) {
-                    favoriteExercises.push(exercise)
-                    allExercises.push(exercise)
-                    favoriteList.append(createExerciseDiv(exercise))
-                } else {
-                    if(currentEquipment === exercise.equipment && currentBodypart === exercise.bodyPart) {
+        if(!currentBodypart) {
+            exerciseList.append(noSelectionMessage)
+        } else {
+            favoriteList.textContent = ''
+            exerciseList.textContent = ''
+            favoriteExercises = []
+            allExercises = []
+            for(const exercise of data) {
+                if(exercise.favorite) {
+                    if(currentEquipment === 'undefined' && currentBodypart === exercise.bodyPart) {
                         favoriteExercises.push(exercise)
                         allExercises.push(exercise)
                         favoriteList.append(createExerciseDiv(exercise))
+                    } else {
+                        if(currentEquipment === exercise.equipment && currentBodypart === exercise.bodyPart) {
+                            favoriteExercises.push(exercise)
+                            allExercises.push(exercise)
+                            favoriteList.append(createExerciseDiv(exercise))
+                        }
                     }
-                }
-            } else {
-                if(currentEquipment === 'none' && currentBodypart === exercise.bodyPart) {
-                    allExercises.push(exercise)
-                    exerciseList.append(createExerciseDiv(exercise))
                 } else {
-                    if(currentEquipment === exercise.equipment && currentBodypart === exercise.bodyPart) {
+                    if(currentEquipment === 'undefined' && currentBodypart === exercise.bodyPart) {
                         allExercises.push(exercise)
                         exerciseList.append(createExerciseDiv(exercise))
+                    } else {
+                        if(currentEquipment === exercise.equipment && currentBodypart === exercise.bodyPart) {
+                            allExercises.push(exercise)
+                            exerciseList.append(createExerciseDiv(exercise))
+                        }
                     }
                 }
+            }
+            if(allExercises.length === 0) {
+                exerciseList.append(noExerciseMessage)
             }
         }
     })
@@ -170,7 +183,7 @@ function createExerciseDiv(exercise) {
     
     const noteInput = document.createElement('textarea')
     noteInput.placeholder = 'Notes'
-    noteInput.cols = '25'
+    noteInput.cols = '35'
     noteInput.required = true
 
     const noteSubmit = document.createElement('button')
@@ -221,7 +234,7 @@ function renderFavorites() {
         return a.name.localeCompare(b.name)
     })
     for(const exercise of favoriteExercises) {
-        if(currentEquipment === 'none' && currentBodypart === exercise.bodyPart) {
+        if(currentEquipment === 'undefined' && currentBodypart === exercise.bodyPart) {
             favoriteList.append(createExerciseDiv(exercise))
         } else {
             if(currentEquipment === exercise.equipment && currentBodypart === exercise.bodyPart) {
@@ -231,7 +244,7 @@ function renderFavorites() {
     }
     for(const exercise of allExercises) {
         if(favoriteExercises.indexOf(exercise) === -1) {
-            if(currentEquipment === 'none' && currentBodypart === exercise.bodyPart) {
+            if(currentEquipment === 'undefined' && currentBodypart === exercise.bodyPart) {
                 exerciseList.append(createExerciseDiv(exercise))
             } else {
                 if(currentEquipment === exercise.equipment && currentBodypart === exercise.bodyPart) {

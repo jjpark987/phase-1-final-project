@@ -404,7 +404,8 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1405.gif",
       "id": "1405",
       "name": "back pec stretch",
-      "target": "lats"
+      "target": "lats",
+      "favorite": false
     },
     {
       "bodyPart": "upper legs",
@@ -968,7 +969,8 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0034.gif",
       "id": "0034",
       "name": "barbell decline bent arm pullover",
-      "target": "lats"
+      "target": "lats",
+      "favorite": false
     },
     {
       "bodyPart": "upper arms",
