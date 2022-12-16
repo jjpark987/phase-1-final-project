@@ -1,9 +1,8 @@
 /*
 Things to do:
 1. Move detailsDiv under star, name and button
-2. Keep detailsDiv hidden when applying CSS selector
-3. Set the area, where the note is display, fixed
-4. Adjust the spacing between elements in .exercise
+2. Set the area, where the note is display, fixed
+3. Adjust the spacing between elements in .exercise and align to the center in the center of the screen
 */
 
 html {
@@ -29,9 +28,7 @@ header {
 }
 
 .list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid
 }
 
 .exercise {
@@ -39,11 +36,14 @@ header {
     align-items: center;
 }
 
-/* .exercise-details {
+.exercise-details {
     display: flex;
     flex-direction: column;
-    align-items: center;
-} */
+}
+
+.details-hidden {
+    display: none;
+}
 
 textarea {
     resize: none;
@@ -52,13 +52,7 @@ textarea {
     font-size: 16px;
 }
 
-.note-form {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.note-container {
+.note-form, .note-container {
     display: flex;
     justify-content: space-between;
     align-items: center;

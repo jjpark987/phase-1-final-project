@@ -110,8 +110,8 @@
       "id": "0007",
       "name": "alternate lateral pulldown",
       "target": "lats",
-      "note": "Last workout: 30lbs 3x10",
-      "favorite": true
+      "note": "",
+      "favorite": false
     },
     {
       "bodyPart": "lower legs",
@@ -128,8 +128,8 @@
       "id": "3293",
       "name": "archer pull up",
       "target": "lats",
-      "note": "Test \nNote",
-      "favorite": true
+      "note": "",
+      "favorite": false
     },
     {
       "bodyPart": "chest",
@@ -376,7 +376,8 @@
       "id": "3672",
       "name": "back and forth step",
       "target": "cardiovascular system",
-      "favorite": false
+      "favorite": false,
+      "note": "asd"
     },
     {
       "bodyPart": "back",
@@ -9363,8 +9364,8 @@
       "id": "3304",
       "name": "skin the cat",
       "target": "upper back",
-      "favorite": true,
-      "note": "This is a very long note. This is a very long note. This is a very long note."
+      "favorite": false,
+      "note": ""
     },
     {
       "bodyPart": "upper legs",

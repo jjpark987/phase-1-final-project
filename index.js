@@ -139,17 +139,16 @@ function createExerciseDiv(exercise) {
     const detailsButton = document.createElement('button')
     detailsButton.textContent = 'Details'
     detailsButton.addEventListener('click', () => {
-        if(detailsDiv.hidden) {
-            detailsDiv.hidden = false
+        if(detailsDiv.className === 'exercise-details details-hidden') {
+            detailsDiv.classList.remove('details-hidden')
         } else {
-            detailsDiv.hidden = true
+            detailsDiv.classList.add('exercise-details', 'details-hidden')
         }
     })
 
     // Create the details div
     const detailsDiv = document.createElement('div')
-    detailsDiv.className = "exercise-details"
-    detailsDiv.hidden = true
+    detailsDiv.classList.add('exercise-details', 'details-hidden')
 
     const image = document.createElement('img')
     image.src = exercise.gifUrl
@@ -171,7 +170,7 @@ function createExerciseDiv(exercise) {
     
     const noteInput = document.createElement('textarea')
     noteInput.placeholder = 'Notes'
-    noteInput.cols = '20'
+    noteInput.cols = '25'
     noteInput.required = true
 
     const noteSubmit = document.createElement('button')
@@ -197,7 +196,9 @@ function createExerciseDiv(exercise) {
         .catch(error => console.log(error))
 
         exercise.note = event.target[0].value
-        favoriteExercises.splice(favoriteExercises.indexOf(exercise), 1, exercise)
+        if(favoriteExercises.indexOf(exercise) !== -1) {
+            favoriteExercises.splice(favoriteExercises.indexOf(exercise), 1, exercise)
+        }
 
         noteContainer.textContent = ''
         newNote.textContent = event.target[0].value
@@ -261,7 +262,9 @@ function createDeleteButton(note) {
         .catch(error => console.log(error))
         
         this.note = ''
-        favoriteExercises.splice(favoriteExercises.indexOf(this), 1, this)
+        if(favoriteExercises.indexOf(this) !== -1) {
+            favoriteExercises.splice(favoriteExercises.indexOf(this), 1, this)
+        }
         note.remove()
         noteDelete.remove()
     })

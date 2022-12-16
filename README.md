@@ -1,3 +1,9 @@
+<!--
+Things to do:
+1. Correctly cite ExerciseDB
+2. Add GIFs
+-->
+
 # Phase 1 Project: ***title
 
 ## Introduction
