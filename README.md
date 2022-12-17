@@ -17,29 +17,25 @@ Workout Finder uses db.json in the local repository. The original database is ci
 
 There are two drop down menus: one for the body part and the other for the equipment. By default, the equipment is set to no preference.
 
-***insert screenshot of page start
+![alt text](https://github.com/jjpark987/phase-1-final-project/blob/f9c9e7ed974b61c790e91f8e831b17ac486cb8ef/gifs/initial.jpg)
 
 The user selects a body part and equipment to search for all potential exercises.
 
-***insert GIF
+![alt text](https://github.com/jjpark987/phase-1-final-project/blob/f9c9e7ed974b61c790e91f8e831b17ac486cb8ef/gifs/searching.gif)
 
 ### Favoriting Exercises
 
 The user can favorite an exercise by clicking on the star next to the name. This brings the exercise to the top of the list in alphabetical order. Clicking on a favorited exercise unfavorites it and brings it back to the original list. ***Favorited exercises are persisted.
 
-***insert GIF
-
-### Revealing Details
-
-Each exercise has a details button that reveals a GIF of the exercise, the target muscle being worked and a form to add a note. 
-
-***insert GIF
+![alt text](https://github.com/jjpark987/phase-1-final-project/blob/f9c9e7ed974b61c790e91f8e831b17ac486cb8ef/gifs/favoriting.gif)
 
 ### Adding Notes
 
+Each exercise has a details button that reveals a GIF of the exercise, the target muscle being worked and a form to add a note.
+
 To add a note, the user clicks on the details button, types into the form and clicks save. The user can delete a note by clicking on the delete button next to the note.
 
-***insert GIF
+![alt text](https://github.com/jjpark987/phase-1-final-project/blob/f9c9e7ed974b61c790e91f8e831b17ac486cb8ef/gifs/note.gif)
 
 Only one note is allowed per exercise. Any additional notes will replace the previous one. ***The notes are persisted.
 
