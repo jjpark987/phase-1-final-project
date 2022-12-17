@@ -1,6 +1,5 @@
 <!--
 Things to do:
-1. Correctly cite ExerciseDB
 2. Add GIFs
 -->
 
@@ -52,5 +51,3 @@ Please contact me at jjpark987@gmail.com for any questions.
 
 The original database used for this project is ExerciseDB by Justin Mozley. Link is provided below:
 https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/details
-
-## License

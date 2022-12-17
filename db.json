@@ -3796,7 +3796,8 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0285.gif",
       "id": "0285",
       "name": "dumbbell alternate biceps curl",
-      "target": "biceps"
+      "target": "biceps",
+      "note": ""
     },
     {
       "bodyPart": "upper arms",
@@ -3804,7 +3805,8 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/2403.gif",
       "id": "2403",
       "name": "dumbbell alternate biceps curl (with arm blaster)",
-      "target": "biceps"
+      "target": "biceps",
+      "favorite": false
     },
     {
       "bodyPart": "upper arms",
@@ -3820,7 +3822,8 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1647.gif",
       "id": "1647",
       "name": "dumbbell alternate preacher curl",
-      "target": "biceps"
+      "target": "biceps",
+      "favorite": false
     },
     {
       "bodyPart": "upper arms",
@@ -3828,7 +3831,8 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1648.gif",
       "id": "1648",
       "name": "dumbbell alternate seated hammer curl",
-      "target": "biceps"
+      "target": "biceps",
+      "favorite": false
     },
     {
       "bodyPart": "shoulders",
@@ -3924,7 +3928,8 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1652.gif",
       "id": "1652",
       "name": "dumbbell bicep curl on exercise ball with leg raised",
-      "target": "biceps"
+      "target": "biceps",
+      "favorite": false
     },
     {
       "bodyPart": "upper arms",
@@ -7133,7 +7138,8 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0525.gif",
       "id": "0525",
       "name": "kettlebell bottoms up clean from the hang position",
-      "target": "biceps"
+      "target": "biceps",
+      "note": ""
     },
     {
       "bodyPart": "upper arms",
