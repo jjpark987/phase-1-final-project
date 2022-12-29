@@ -3797,7 +3797,8 @@
       "id": "0285",
       "name": "dumbbell alternate biceps curl",
       "target": "biceps",
-      "note": ""
+      "note": "",
+      "favorite": false
     },
     {
       "bodyPart": "upper arms",
@@ -3814,7 +3815,8 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1646.gif",
       "id": "1646",
       "name": "dumbbell alternate hammer preacher curl",
-      "target": "biceps"
+      "target": "biceps",
+      "favorite": false
     },
     {
       "bodyPart": "upper arms",
@@ -3848,7 +3850,8 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1649.gif",
       "id": "1649",
       "name": "dumbbell alternating bicep curl with leg raised on exercise ball",
-      "target": "biceps"
+      "target": "biceps",
+      "favorite": false
     },
     {
       "bodyPart": "upper arms",
@@ -3856,7 +3859,8 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1650.gif",
       "id": "1650",
       "name": "dumbbell alternating seated bicep curl on exercise ball",
-      "target": "biceps"
+      "target": "biceps",
+      "favorite": false
     },
     {
       "bodyPart": "shoulders",
@@ -3920,7 +3924,8 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1651.gif",
       "id": "1651",
       "name": "dumbbell bicep curl lunge with bowling motion",
-      "target": "biceps"
+      "target": "biceps",
+      "favorite": false
     },
     {
       "bodyPart": "upper arms",

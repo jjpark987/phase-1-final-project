@@ -1,8 +1,3 @@
-<!--
-Things to do:
-2. Add GIFs
--->
-
 # Phase 1 Project: Workout Finder
 
 ## Introduction
@@ -45,5 +40,5 @@ Please contact me at jjpark987@gmail.com for any questions.
 
 ## Authors and Acknowledgment
 
-The original database used for this project is ExerciseDB by Justin Mozley. Link is provided below:
+The original database used for this project is ExerciseDB by Justin Mozley. Link is provided here:
 https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/details
