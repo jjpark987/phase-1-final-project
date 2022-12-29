@@ -12,17 +12,17 @@ Workout Finder uses db.json in the local repository. The original database is ci
 
 There are two drop down menus: one for the body part and the other for the equipment. By default, the equipment is set to no preference.
 
-![alt text](gifs/initial.jpg)
+![alt text](gifs-and-videos/initial.jpg)
 
 The user selects a body part and equipment to search for all potential exercises.
 
-![alt text](gifs/searching.gif)
+![alt text](gifs-and-videos/searching.gif)
 
 ### Favoriting Exercises
 
 The user can favorite an exercise by clicking on the star next to the name. This brings the exercise to the top of the list in alphabetical order. Clicking on a favorited exercise unfavorites it and brings it back to the original list. Favoriting exercises is persisted.
 
-![alt text](gifs/favoriting.gif)
+![alt text](gifs-and-videos/favoriting.gif)
 
 ### Adding Notes
 
@@ -30,7 +30,7 @@ Each exercise has a details button that reveals a GIF of the exercise, the targe
 
 To add a note, the user clicks on the details button, types into the form and clicks save. The user can delete a note by clicking on the delete button next to the note.
 
-![alt text](gifs/note.gif)
+![alt text](gifs-and-videos/note.gif)
 
 Only one note is allowed per exercise. Any additional notes will replace the previous one. The notes are persisted.
 
