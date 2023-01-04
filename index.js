@@ -102,48 +102,38 @@ function createExerciseDiv(exercise) {
     const star = document.createElement('div')
     if(exercise.favorite || favoriteExercises.indexOf(exercise) !== -1) {
         star.textContent = '★'
-    } if(favoriteExercises.indexOf(exercise) === -1) {
+    }
+    if(favoriteExercises.indexOf(exercise) === -1) {
         star.textContent = '☆'
     }
     star.addEventListener('click', () => {
-        if(favoriteExercises.indexOf(exercise) === -1) {
-            fetch(`http://localhost:3000/exercises/${exercise.id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                favorite: true
-            })
-            })
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.log(error))
-
-            favoriteExercises.push(exercise)
-            renderFavorites()
-        } else {
-            fetch(`http://localhost:3000/exercises/${exercise.id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                favorite: false
-            })
-            })
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.log(error))
-
-            favoriteExercises = favoriteExercises.filter(item => {
-                return item !== exercise
-            })
-            renderFavorites()
-        }
+        updateFavorites(exercise)
     })
+
+     function updateFavorites(exercise) {
+        fetch(`http://localhost:3000/exercises/${exercise.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                favorite: !exercise.favorite
+            })
+            })
+            .then(response => response.json())
+            .then(updatedExercise => {
+                if(updatedExercise.favorite) {
+                    favoriteExercises.push(updatedExercise)
+                } else if(!updatedExercise.favorite) {
+                    favoriteExercises = favoriteExercises.filter(item => {
+                        return item.id !== updatedExercise.id
+                    })
+                }
+            })
+            .then(() => renderFavorites())
+            .catch(error => console.log(error))
+     }
 
     // Create the name and details button
     const name = document.createElement('h3')

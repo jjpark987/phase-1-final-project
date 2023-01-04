@@ -253,7 +253,7 @@
       "name": "assisted parallel close grip pull-up",
       "target": "lats",
       "note": "",
-      "favorite": false
+      "favorite": true
     },
     {
       "bodyPart": "upper legs",
@@ -287,7 +287,7 @@
       "name": "assisted pull-up",
       "target": "lats",
       "note": "",
-      "favorite": false
+      "favorite": true
     },
     {
       "bodyPart": "chest",
@@ -3724,7 +3724,8 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/2331.gif",
       "id": "2331",
       "name": "cycle cross trainer",
-      "target": "cardiovascular system"
+      "target": "cardiovascular system",
+      "favorite": false
     },
     {
       "bodyPart": "waist",
@@ -3990,7 +3991,8 @@
       "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1201.gif",
       "id": "1201",
       "name": "dumbbell burpee",
-      "target": "cardiovascular system"
+      "target": "cardiovascular system",
+      "favorite": false
     },
     {
       "bodyPart": "upper legs",
