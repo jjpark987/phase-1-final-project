@@ -1,7 +1,9 @@
-const exerciseObj = {
-    bodyparts: ["back", "cardio", "chest", "lower arms", "lower legs", "neck", "shoulders", "upper arms", "upper legs", "waist"],
-    equipments: ["assisted", "band", "barbell", "body weight", "bosu ball", "cable", "dumbbell", "elliptical machine", "ez barbell", "hammer", "kettlebell", "leverage machine", "medicine ball", "olympic barbell", "resistance band", "roller", "rope", "skierg machine", "sled machine", "smith machine", "stability ball", "stationary bike", "stepmill machine", "tire", "trap bar", "upper body ergometer", "weighted", "wheel roller"]
-}
+// const exerciseObj = {
+//     bodyparts: ["back", "cardio", "chest", "lower arms", "lower legs", "neck", "shoulders", "upper arms", "upper legs", "waist"],
+//     equipments: ["assisted", "band", "barbell", "body weight", "bosu ball", "cable", "dumbbell", "elliptical machine", "ez barbell", "hammer", "kettlebell", "leverage machine", "medicine ball", "olympic barbell", "resistance band", "roller", "rope", "skierg machine", "sled machine", "smith machine", "stability ball", "stationary bike", "stepmill machine", "tire", "trap bar", "upper body ergometer", "weighted", "wheel roller"]
+// }
+let bodyparts = new Set()
+const equipments = new Set()
 const bodypartDropdown = document.querySelector('#bodypart-dropdown')
 const equipmentDropdown = document.querySelector('#equipment-dropdown')
 let currentBodypart
@@ -20,17 +22,34 @@ noSelectionMessage.className = 'message'
 noExerciseMessage.className = 'message'
 
 // Set up bodyparts and equipments dropdown menu
-for(const bodypart of exerciseObj.bodyparts) {
+fetch('http://localhost:3000/exercises')
+.then(res => res.json())
+.then(exercises => {
+    for(const exercise of exercises) {
+        bodyparts.add(exercise.bodyPart)
+        equipments.add(exercise.equipment)
+        bodyparts = Array.from(bodyparts)
+    }
+})
+.catch(error => console.log(error))
+
+console.log(bodyparts)
+
+bodyparts.forEach(bodypart => {
+    console.log("hi", bodypart)
+})
+
+for(const bodypart of bodyparts) {
+    console.log("hi", bodypart)
     bodypartDropdown.append(setDropdown(bodypart))
 }
 setDropdownEvent(bodypartDropdown)
 
-for(const equipment of exerciseObj.equipments) {
+for(const equipment of equipments) {
     equipmentDropdown.append(setDropdown(equipment))
 }
 setDropdownEvent(equipmentDropdown)
 
-// Define functions that create the dropdown options and sets current bodypart and equipment
 function setDropdown(item) {
     const option = document.createElement('option')
     option.value = item
